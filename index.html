@@ -50,7 +50,7 @@ function initialize()
 		stokeOpacity: 0
 });
   
-		crosshair = new google.maps.MarkerImage('clear%20black%20dot%20med.png',
+		crosshair = new google.maps.MarkerImage('marker.png',
 				// This marker is 10 pixels wide by 10 pixels tall.
 		  new google.maps.Size(10, 10),
 				  // The origin for this image is 0,0.
@@ -205,19 +205,19 @@ function clearLayer()
 		<legend>Network</legend>
 		<ol>
 		  <li>
-			  <label for="Vodafone">Vodafone  </label><img src="small%20red%20dot.png"/>
+			  <label for="Vodafone">Vodafone  </label><img src="dot-red.png"/>
 			  <input id="Vodafone" class="shift" onclick="MakeQuery()" type="checkbox" name="sites" value="'Vodafone',"><br />
 		  </li>
 		  <li>
-			  <label for="O2">O2  </label><img src="small%20blue%20dot.png"/>
+			  <label for="O2">O2  </label><img src="dot-blue.png"/>
 			  <input id="O2" class="shift" onclick="MakeQuery()" type="checkbox" name="sites" value="'O2',"><br />
 		  </li>
 		  <li>
-			  <label for="Meteor">Meteor  </label><img src="small%20yellow%20dot.png"/>
+			  <label for="Meteor">Meteor  </label><img src="dot-yellow.png"/>
 			  <input id="Meteor" class="shift" onclick="MakeQuery()" type="checkbox" name="sites" value="'Meteor',"><br />
 		  </li>
 		  <li class="bottomli">
-			  <label for="3">3  </label><img src="vsmall%20green%20dot.png"/><label> NBS </label><img src="vsmal%20purple%20dot.png"/>
+			  <label for="3">3  </label><img src="dot-green.png"/><label> NBS </label><img src="dot-purple.png"/>
 			  <input id="3" class="shift" onclick="MakeQuery()" type="checkbox" name="sites" value="'3',"><br />
 		  </li>
 		</ol>
@@ -246,11 +246,11 @@ function clearLayer()
 		<legend>Eircom</legend>
 		<ol>
 			<li>
-				<label for=DSL>DSL  </label><img src="vsmall%20white%20dot.png"/>
+				<label for=DSL>DSL  </label><img src="dot-white.png"/>
 				<input class="shift" onclick="compQuery()" id="DSL" name="exchange" type="checkbox" value="'y',">
 			</li>
 			<li class="bottomli">
-				<label for=nonDSL>not DSL  </label><img src="vsmall%20grey%20dot.png"/>
+				<label for=nonDSL>not DSL  </label><img src="dot-grey.png"/>
 				<input class="shift" onclick="compQuery()" id="nonDSL" name="exchange" type="checkbox" value="'n',">
 			</li>
 		</ol>
