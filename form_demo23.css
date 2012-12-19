@@ -52,16 +52,19 @@ ol, li, fieldset {
 	margin-right:2px;
 	margin-left:2px;
 	float:left;
-	width:130px;
+	width:150px;
 
 }
 
-.centreform {
-	float:left
-	margin-left:3px;
-	margin-top: 3px;
-	margin-bottom: 3px;
+.c {
+	text-align: center;
+	padding: 3px;
+}
 
+.centreform {
+	font-size: 0.9em;
+	float: none;
+	padding: 3px;
 }
 
 .bottomli {
