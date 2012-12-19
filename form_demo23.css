@@ -52,7 +52,7 @@ ol, li, fieldset {
 	margin-right:2px;
 	margin-left:2px;
 	float:left;
-	width:150px;
+	width:130px;
 
 }
 
@@ -69,5 +69,9 @@ ol, li, fieldset {
 
 .bottomli {
 	padding-bottom: 5px;
+}
+
+.fldLast {
+	margin-top: 5px;
 }
 
