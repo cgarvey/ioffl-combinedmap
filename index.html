@@ -158,36 +158,36 @@
 					<legend>Network</legend>
 					<ol>
 						<li>
-							<input id="Vodafone" onclick="MakeQuery()" type="checkbox" name="sites" value="'Vodafone',">
-							<label for="Vodafone"><img src="dot-red.png" />Vodafone</label>
+							<input id="idNetVoda" onclick="MakeQuery()" type="checkbox" name="sites" value="'Vodafone',">
+							<label for="idNetVoda"><img src="dot-red.png" />Vodafone</label>
 						</li>
 						<li>
-							<input id="O2" onclick="MakeQuery()" type="checkbox" name="sites" value="'O2',">
-							<label for="O2"><img src="dot-blue.png" />O2</label>
+							<input id="idNetO2" onclick="MakeQuery()" type="checkbox" name="sites" value="'O2',">
+							<label for="idNetO2"><img src="dot-blue.png" />O2</label>
 						</li>
 						<li>
-							<input id="Meteor" onclick="MakeQuery()" type="checkbox" name="sites" value="'Meteor',">
-							<label for="Meteor"><img src="dot-yellow.png" />Meteor</label>
+							<input id="idNetMet" onclick="MakeQuery()" type="checkbox" name="sites" value="'Meteor',">
+							<label for="idNetMet"><img src="dot-yellow.png" />Meteor</label>
 						</li>
 						<li class="bottomli">
-							<input id="3" onclick="MakeQuery()" type="checkbox" name="sites" value="'3',">
-							<label for="3"><img src="dot-green.png" />3 &nbsp;&nbsp; <img src="dot-purple.png" />NBS</label>
+							<input id="idNet3" onclick="MakeQuery()" type="checkbox" name="sites" value="'3',">
+							<label for="idNet3"><img src="dot-green.png" />3 &nbsp;&nbsp; <img src="dot-purple.png" />NBS</label>
 						</li>
 					</ol>
 				</fieldset>
 			</form>
 
-			<form id="Platform" name = "technology">
+			<form id="Platform" name="technology">
 				<fieldset>
 					<legend>Platform</legend>
 					<ol>
 						<li>
-							<input onclick="MakeQuery()" id="GSM" name="platform" type="checkbox" value=" AND GSM = 'X'">
-							<label for=GSM>GSM</label>
+							<input id="idPlatGSM" onclick="MakeQuery()" name="platform" type="checkbox" value=" AND GSM = 'X'">
+							<label for="idPlatGSM">GSM</label>
 						</li>
 						<li class="bottomli">
-							<input onclick="MakeQuery()" id="3G" name="platform" type="checkbox" value=" AND UMTS = 'X'">
-							<label for=3G>3G (Midband)</label>
+							<input id="idPlat3G" onclick="MakeQuery()" name="platform" type="checkbox" value=" AND UMTS = 'X'">
+							<label for="idPlat3G">3G (Midband)</label>
 						</li>
 					</ol>
 				</fieldset>
@@ -198,12 +198,12 @@
 					<legend>Eircom</legend>
 					<ol>
 						<li>
-							<label for=DSL><img src="dot-white.png" />DSL</label>
-							<input onclick="compQuery()" id="DSL" name="exchange" type="checkbox" value="'y',">
+							<input id="idEirDSL" onclick="compQuery()" name="exchange" type="checkbox" value="'y',">
+							<label for="idEirDSL"><img src="dot-white.png" />DSL</label>
 						</li>
 						<li class="bottomli">
-							<label for=nonDSL><img src="dot-grey.png" />No DSL</label>
-							<input onclick="compQuery()" id="nonDSL" name="exchange" type="checkbox" value="'n',">
+							<input id="idEirNoDSL" onclick="compQuery()" name="exchange" type="checkbox" value="'n',">
+							<label for="idEirNoDSL"><img src="dot-grey.png" />No DSL</label>
 						</li>
 					</ol>
 				</fieldset>
@@ -214,24 +214,24 @@
 					<legend>Underlays</legend>
 					<ol>
 						<li>
-							<input onclick="overlay(layer1,1236159,'SELECT KML FROM 1236159 WHERE Urban = \u0027X\u0027')" id="UrbanAreas" name="area" type="radio" value="1236159">
-							<label for=Urban>Urban</label>
+							<input id="idAreaUrban" onclick="overlay(layer1,1236159,'SELECT KML FROM 1236159 WHERE Urban = \u0027X\u0027')" name="area" type="radio" value="1236159">
+							<label for="idAreaUrban">Urban</label>
 						</li>
 						<li>
-							<input onclick="overlay(layer1,848418,'SELECT KML FROM 848418')" id="NBSAreas" name="area" type="radio" value="848418">
-							<label for=NBS>NBS</label>
+							<input id="idAreaNBS" onclick="overlay(layer1,848418,'SELECT KML FROM 848418')" name="area" type="radio" value="848418">
+							<label for="idAreaNBS">NBS</label>
 						</li>
 						<li>
-							<input onclick="overlay(layer1,1242110,'SELECT KML FROM 1242110')" id="Counties" name="area" type="radio" value="1242110">
-							<label for=Counties>Counties</label>
+							<input id="idAreaCnt" onclick="overlay(layer1,1242110,'SELECT KML FROM 1242110')" name="area" type="radio" value="1242110">
+							<label for="idAreaCnt">Counties</label>
 						</li>				
 						<li>
-							<input onclick="overlay(layer1,1214572,'SELECT KML FROM 1214572')" id="Eircom" name="area" type="radio" value="1214572">
-							<label for=Eircom>Exchanges</label>
+							<input id="idAreacExch"  onclick="overlay(layer1,1214572,'SELECT KML FROM 1214572')" name="area" type="radio" value="1214572">
+							<label for="idAreacExch">Exchanges</label>
 						</li>
 						<li class="bottomli">
-							<input onclick="overlay(layer1,1412833,'SELECT coordinates FROM 1412833')" id="IntConnX" name="area" type="radio" value="1412833">
-							<label for=IntConnX>International</label>
+							<input id="idAreaInt" onclick="overlay(layer1,1412833,'SELECT coordinates FROM 1412833')" name="area" type="radio" value="1412833">
+							<label for="idAreaInt">International</label>
 						</li>
 					</ol>
 				</fieldset>
