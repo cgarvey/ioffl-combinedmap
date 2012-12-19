@@ -146,6 +146,11 @@
 				if (layer2 !=null) layer2.setMap(map);
 			}
 
+			function clearAllLayers() {
+				if( layer ) layer.setMap( null );
+				if( layer1 ) layer1.setMap( null );
+				if( layer2 ) layer2.setMap( null );
+			}
 			function clearLayer() {
 				if (currentLayer != null) currentLayer.setMap(null);
 			}
@@ -213,6 +218,10 @@
 				<fieldset>
 					<legend>Underlays</legend>
 					<ol>
+						<li>
+							<input id="idAreaNone" onclick="clearAllLayers();" name="area" type="radio" />
+							<label for="idAreaNone">None</label>
+						</li>
 						<li>
 							<input id="idAreaUrban" onclick="overlay(layer1,1236159,'SELECT KML FROM 1236159 WHERE Urban = \u0027X\u0027')" name="area" type="radio" value="1236159">
 							<label for="idAreaUrban">Urban</label>
