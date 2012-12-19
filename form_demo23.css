@@ -27,6 +27,15 @@ legend {
 	padding-bottom: 0px;
 }
 
+form img {
+	margin-right: 5px;
+	margin-left: 2px;
+}
+input {
+	float: left;
+	margin-top: 0px;
+}
+
 label {
 	margin-bottom: 0px;
 }
@@ -36,6 +45,7 @@ ol, li, fieldset {
 	padding: 1px;
 	font-family:Arial,Helvetica,sans-serif;
 	font-size: 11px;
+	clear: both;
 }
 
 .form {

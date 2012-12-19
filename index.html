@@ -158,20 +158,20 @@
 					<legend>Network</legend>
 					<ol>
 						<li>
-							<label for="Vodafone">Vodafone </label><img src="dot-red.png"/>
-							<input id="Vodafone" onclick="MakeQuery()" type="checkbox" name="sites" value="'Vodafone',"><br />
+							<input id="Vodafone" onclick="MakeQuery()" type="checkbox" name="sites" value="'Vodafone',">
+							<label for="Vodafone"><img src="dot-red.png" />Vodafone</label>
 						</li>
 						<li>
-							<label for="O2">O2 </label><img src="dot-blue.png"/>
-							<input id="O2" onclick="MakeQuery()" type="checkbox" name="sites" value="'O2',"><br />
+							<input id="O2" onclick="MakeQuery()" type="checkbox" name="sites" value="'O2',">
+							<label for="O2"><img src="dot-blue.png" />O2</label>
 						</li>
 						<li>
-							<label for="Meteor">Meteor </label><img src="dot-yellow.png"/>
-							<input id="Meteor" onclick="MakeQuery()" type="checkbox" name="sites" value="'Meteor',"><br />
+							<input id="Meteor" onclick="MakeQuery()" type="checkbox" name="sites" value="'Meteor',">
+							<label for="Meteor"><img src="dot-yellow.png" />Meteor</label>
 						</li>
 						<li class="bottomli">
-							<label for="3">3 </label><img src="dot-green.png"/><label> NBS </label><img src="dot-purple.png"/>
-							<input id="3" onclick="MakeQuery()" type="checkbox" name="sites" value="'3',"><br />
+							<input id="3" onclick="MakeQuery()" type="checkbox" name="sites" value="'3',">
+							<label for="3"><img src="dot-green.png" />3 &nbsp;&nbsp; <img src="dot-purple.png" />NBS</label>
 						</li>
 					</ol>
 				</fieldset>
@@ -182,12 +182,12 @@
 					<legend>Platform</legend>
 					<ol>
 						<li>
-							<label for=GSM>GSM</label>
 							<input onclick="MakeQuery()" id="GSM" name="platform" type="checkbox" value=" AND GSM = 'X'">
+							<label for=GSM>GSM</label>
 						</li>
 						<li class="bottomli">
-							<label for=3G>3G (Midband)</label>
 							<input onclick="MakeQuery()" id="3G" name="platform" type="checkbox" value=" AND UMTS = 'X'">
+							<label for=3G>3G (Midband)</label>
 						</li>
 					</ol>
 				</fieldset>
@@ -198,11 +198,11 @@
 					<legend>Eircom</legend>
 					<ol>
 						<li>
-							<label for=DSL>DSL </label><img src="dot-white.png"/>
+							<label for=DSL><img src="dot-white.png" />DSL</label>
 							<input onclick="compQuery()" id="DSL" name="exchange" type="checkbox" value="'y',">
 						</li>
 						<li class="bottomli">
-							<label for=nonDSL>not DSL </label><img src="dot-grey.png"/>
+							<label for=nonDSL><img src="dot-grey.png" />No DSL</label>
 							<input onclick="compQuery()" id="nonDSL" name="exchange" type="checkbox" value="'n',">
 						</li>
 					</ol>
@@ -214,24 +214,24 @@
 					<legend>Underlays</legend>
 					<ol>
 						<li>
-							<label for=Urban>Urban</label>
 							<input onclick="overlay(layer1,1236159,'SELECT KML FROM 1236159 WHERE Urban = \u0027X\u0027')" id="UrbanAreas" name="area" type="radio" value="1236159">
+							<label for=Urban>Urban</label>
 						</li>
 						<li>
-							<label for=NBS>NBS</label>
 							<input onclick="overlay(layer1,848418,'SELECT KML FROM 848418')" id="NBSAreas" name="area" type="radio" value="848418">
+							<label for=NBS>NBS</label>
 						</li>
 						<li>
-							<label for=Counties>Counties</label>
 							<input onclick="overlay(layer1,1242110,'SELECT KML FROM 1242110')" id="Counties" name="area" type="radio" value="1242110">
+							<label for=Counties>Counties</label>
 						</li>				
 						<li>
-							<label for=Eircom>Exchanges</label>
 							<input onclick="overlay(layer1,1214572,'SELECT KML FROM 1214572')" id="Eircom" name="area" type="radio" value="1214572">
+							<label for=Eircom>Exchanges</label>
 						</li>
 						<li class="bottomli">
-							<label for=IntConnX>International</label>
 							<input onclick="overlay(layer1,1412833,'SELECT coordinates FROM 1412833')" id="IntConnX" name="area" type="radio" value="1412833">
+							<label for=IntConnX>International</label>
 						</li>
 					</ol>
 				</fieldset>
