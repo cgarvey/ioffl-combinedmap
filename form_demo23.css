@@ -1,69 +1,60 @@
 
 html { 
-  height: 100% 
+	height: 100% 
 }
 
 .map_canvas {
-  height:100%
+	height:100%
 }
 
 body {
-color: ##99B3CC;
-background-color:#a5bfdd;
-height: 100%; 
-margin: 0px; 
-padding: 0px;
+	color: ##99B3CC;
+	background-color:#a5bfdd;
+	height: 100%; 
+	margin: 0px; 
+	padding: 0px;
 }
 
 legend {
-color: black;
-font-family:Arial,Helvetica,sans-serif;
-font-size: 12px;
-font-weight: bold;
-padding-top: 5px;
-padding-left:10px;
-padding-right:10px;
-margin-left:0px;
-padding-bottom: 0px;
+	color: black;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	padding-top: 5px;
+	padding-left:10px;
+	padding-right:10px;
+	margin-left:0px;
+	padding-bottom: 0px;
 }
 
 label {
-  margin-bottom: 0px;
+	margin-bottom: 0px;
 }
 
 ol, li, fieldset {
-margin: 0px;
-padding: 1px;
-font-family:Arial,Helvetica,sans-serif;
-font-size: 11px;
+	margin: 0px;
+	padding: 1px;
+	font-family:Arial,Helvetica,sans-serif;
+	font-size: 11px;
 }
 
 .form {
-  margin-right:2px;
-  margin-left:2px;
-  float:left;
-  width:100px;
+	margin-right:2px;
+	margin-left:2px;
+	float:left;
+	width:130px;
 
 }
 
 .centreform {
-  float:left
-  margin-left:3px;
-  margin-top: 3px;
-  margin-bottom: 3px;
+	float:left
+	margin-left:3px;
+	margin-top: 3px;
+	margin-bottom: 3px;
 
 }
 
-.shift
-{
-position:absolute;
-left:75px;
-width:20px;
-background-color:#b0e0e6;
-
+.bottomli {
+	padding-bottom: 5px;
 }
-.bottomli
-{
-padding-bottom: 5px;
 
-}
