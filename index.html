@@ -16,42 +16,41 @@
 	
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
 		<script type="text/javascript">
-			var marker = "null"
-			var PlatQry="";
-			var NetQry="Network NOT EQUAL TO 'F' ";
-			var CombQry="";
+		
 			var currentLayer = null;
 			var layer = null;
 			var layer1 = null;
 			var layer2 = null;
-			var exchQry ="";
+			var marker = "null"			
 			var circle = null;
-			var crosshair = null
+			var crosshair = null;
+			var wispsArray = []
+
 
 			function initialize() {
-				// Set centre of map
+									// Set centre of map
 				var athlone = new google.maps.LatLng(53.5, -7.5);
-				// Set background map, centre, zoom level, type
+									// Set background map, centre, zoom level, type
 				map = new google.maps.Map(document.getElementById('map_canvas'), {
 					center: athlone,
 					zoom: 7,
 					mapTypeId: 'roadmap'
 				});
 
-				// Add a Circle overlay to the map.
+									// Add a Circle overlay to the map.
 				circle = new google.maps.Circle({
 					map: map,
-					radius: 4500, // 4.5 kms
+					radius: 3500, // 3.5 kms
 					strokeWeight: 0,
 					stokeOpacity: 0
 				});
 
 				crosshair = new google.maps.MarkerImage('marker.png',
-					// This marker is 10 pixels wide by 10 pixels tall.
+									// This marker is 10 pixels wide by 10 pixels tall.
 					new google.maps.Size(10, 10),
-					// The origin for this image is 0,0.
+									// The origin for this image is 0,0.
 					new google.maps.Point(0,0),
-					// The anchor for this image is at the base at 5,5.
+									// The anchor for this image is at the base at 5,5.
 					new google.maps.Point(5, 5)
 				);
 				
@@ -60,64 +59,37 @@
 					map: map,
 					position: new google.maps.LatLng(53.5, -10.5),
 					draggable: true,
-					title: 'Drag to your location'
+					title: 'Drag to your location 3.5 kms'
 				});
 				
 				circle.bindTo('center', marker, 'position');
 			}
-			
+									//Function brings circle marker to centre of screen
 			function fetchMarker() {
 				marker.position = map.getCenter(),
 				circle.bindTo('center', marker, 'position');
 				marker.setMap(map);
 			}
 			
-			function formScan(formVar,formName,txtOut) {
-				var formVar=document.formName.formVar;
+			// SECTION ON MOBILE NETWORKS AND PLATFORMS
+			
+									// Function to create SQL query string from checked boxes of a form FormNo
+			
+			function formScan(formNo) {
+					
 				var i;
 				txtOut="";
-				for (i=0;i<formVar.length;i++) {
-					if (formVar[i].checked) txtOut=txtOut + formVar[i].value;
+				for (i=0;i<document.forms[formNo].length;i++) {
+					if (document.forms[formNo].elements[i].checked) txtOut=txtOut + document.forms[formNo].elements[i].value;
 					else txtOut=txtOut + "";
 				}
+				return txtOut;
 			}
-
-			function PlatQueryTxt() {
-				var platform=document.technology.platform;
-				var i;
-				PlatQry="";
-				for (i=0;i<platform.length;i++) {
-					if (platform[i].checked) PlatQry=PlatQry + platform[i].value;
-					else PlatQry=PlatQry + "";
-				}
-			}
-
-			function NetQuery() {
-				var sites=document.providers.sites;
-				var i;
-				NetQry="";
-				
-				for (i=0;i<sites.length;i++) {
-					if (sites[i].checked) NetQry=NetQry + sites[i].value;
-					else NetQry=NetQry + "";
-				}
-			}
-			
-			function ExchQry() {
-				var exchange = document.eircom.exchange;
-				var i;
-				exchQry="";
-				for (i=0;i<exchange.length;i++) {
-					if (exchange[i].checked) exchQry=exchQry + exchange[i].value ;
-					else exchQry=exchQry + "";
-				}
-			}
-
+									// Function combines Network, Platform queries of the Mobile Sites Fusion table.
 			function MakeQuery() {
+			  
 				CombQry =""
-				NetQuery();
-				PlatQueryTxt();
-				CombQry = "'Network' IN (" + NetQry + "'f')" + PlatQry;
+				CombQry = "'Network' IN (" + formScan(0) + "'f')" + formScan(1);
 				currentLayer=layer2
 				clearLayer();
 				
@@ -125,17 +97,18 @@
 				stackLayers();
 				currentLayer = layer2;
 			}
-			
+									// Function queries the Eircom exchanges Fusion Table
 			function compQuery() {
 				currentLayer = layer;
 				clearLayer();
-				ExchQry();
-				exchQry="(" + exchQry +"'f')";
+				
+				exchQry="(" + formScan(2) +"'f')";
 				layer = new google.maps.FusionTablesLayer(1888694, { query: "SELECT Location FROM 1888694 WHERE 'Enabled' IN" + exchQry});
 				stackLayers();
 				currentLayer = layer;
 			}
-			
+			//SECTION ON UNDERLAYS
+									// Function sets underlay based on radio button choice of Form AreaOverlay
 			function overlay(layerNo,dataset,querytxt) {
 				currentLayer = layerNo;
 				clearLayer();
@@ -143,6 +116,7 @@
 				stackLayers();
 				currentLayer = layerNo;
 			}
+			//SECTION ON MANAGING LAYERS
 			
 			function stackLayers() {
 				if (layer1 != null) layer1.setMap(map);
@@ -155,16 +129,88 @@
 				if( layer1 ) layer1.setMap( null );
 				if( layer2 ) layer2.setMap( null );
 			}
+			
 			function clearLayer() {
 				if (currentLayer != null) currentLayer.setMap(null);
 			}
+			//SECTION ON GROUNDOVERLAYS FOR FWAs AND WISPS
+			
+									// Creates overlay. Updates the overlay array.
+			function newLayer(North,South,East,West,vis,overLayLink){
+			  
+			  var imageBounds = new google.maps.LatLngBounds(
+				  new google.maps.LatLng(South,West),
+				  new google.maps.LatLng(North,East));
+			  
+			  var overlayOpts = {
+					opacity:vis}
+				
+			  var wisp = new google.maps.GroundOverlay(
+							  overLayLink,imageBounds, overlayOpts);
+			  wispsArray.push(wisp);
+			  wisp.setMap(map);
+			}
+			  						//Checks whether FWA checkbox is ticked
+			function checkedState(){
+			  
+			  if(document.getElementById("idWISPs").checked){
+			  	loadGroundOverlays();}
+			  else{
+			  	clearOverlays();}
+			}			  	
+									// Loads all overlays onto map
+			function loadGroundOverlays(){
+			  
+			  newLayer(52.17259,51.27235,-8.3619661,-10.12707,0.9,"https://dl.dropbox.com/u/39502907/net-cov.png");
+			  newLayer(54.52309,53.17326,-8.289186,-10.29116,0.5,"https://dl.dropbox.com/u/39502907/Westnet_LowRes_2013.png");
+			  newLayer(52.744606,51.949345,-9.118652,-10.721283,0.8,"https://dl.dropbox.com/u/39502907/Kerry%20Broadband%20OL_Fin.png");
+			}
+			  		
+									// Sets the map on all overlays in the array.
+			function setAllMap(map) {
+			  for (var i = 0; i < wispsArray.length; i++) {
+				wispsArray[i].setMap(map);
+			  }
+			}
+			
+									// Removes the overlays from the map, but keeps them in the array.
+			function clearOverlays() {
+			  setAllMap(null);
+			}
+			
+									// Shows any overlays currently in the array.
+			function showOverlays() {
+			  setAllMap(map);
+			}
+			
+									// Deletes all overlays in the array by removing references to them.
+			function deleteOverlays() {
+			  clearOverlays();
+			  wispsArray = [];
+			}
+
 		</script>
 	</head>
 	<body onload="initialize()">
 		<div id="Form" class="form">
+			<img class="logo" border="0" src="https://dl.dropbox.com/u/39502907/IoffL%20logo.png" alt="Pulpit rock" width="130" height="30">
+				<fieldset>
+					<legend>Fixed Wireless</legend>
+					<ol>
+						<li>
+							<input id="idWISPs" onchange="checkedState()" type="checkbox" name="WISPs" value="Bullseye">
+							<label for="idWISPs">WISPs</label>
+						</li>
+						<li class="bottomli">
+							<input id="idFWAs" onclick="MakeQuery()" type="checkbox" name="FWAs">
+							<label for="idFWAs">FWAs</label>
+						</li>
+					</ol>
+				</fieldset>				
+
 			<form id="Network" name="providers">
 				<fieldset>
-					<legend>Network</legend>
+					<legend>Mobile</legend>
 					<ol>
 						<li>
 							<input id="idNetVoda" onclick="MakeQuery()" type="checkbox" name="sites" value="'Vodafone',">
@@ -188,11 +234,10 @@
 
 			<form id="Platform" name="technology">
 				<fieldset>
-					<legend>Platform</legend>
 					<ol>
 						<li>
 							<input id="idPlatGSM" onclick="MakeQuery()" name="platform" type="checkbox" value=" AND GSM = 'X'">
-							<label for="idPlatGSM">GSM</label>
+							<label for="idPlatGSM">GSM (Voice/Text)</label>
 						</li>
 						<li class="bottomli">
 							<input id="idPlat3G" onclick="MakeQuery()" name="platform" type="checkbox" value=" AND UMTS = 'X'">
@@ -248,13 +293,12 @@
 						</li>
 					</ol>
 				</fieldset>
-		
 				<fieldset class="fldLast">
 					<div class="c">
-						<input type="button" class="centreform" onclick="fetchMarker()" value="Fetch Marker" />
+						<input type="button" class="centreform" onclick="fetchMarker()" value="Fetch Marker (3.5kms)" />
 					</div>
 				</fieldset>
-			</form>
+				</form>
 		</div>
 		<div id="map_canvas"></div>
 	</body>
