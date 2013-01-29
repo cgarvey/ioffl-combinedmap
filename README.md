@@ -12,8 +12,8 @@ Contributing
 
 Change Log
 ----------
-v1.1 - Added some WISP coverage maps
-v1.0 - Initial Map
+* v1.1 - Added some WISP coverage maps. Minor tidy up.
+* v1.0 - Initial Map
 
 License
 -------
