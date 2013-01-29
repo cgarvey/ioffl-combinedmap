@@ -11,3 +11,5 @@ ol, li, fieldset { margin: 0px; padding: 1px; font-family:Arial,Helvetica,sans-s
 .centreform { font-size: 0.9em; float: none; padding: 3px; }
 .bottomli { padding-bottom: 5px; }
 .fldLast { margin-top: 5px; } 
+.imgLogo { border: 0; width: 130px; height: 30px; }
+
