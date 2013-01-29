@@ -10,6 +10,11 @@ Contributing
 ------------
 [IrelandOffline](http://irelandoffline.org/) have put this code up on Github to encourage contribute from members and non-members alike. Please use the standard practice of Github's Pull Requests to contribute your changes. Try to stick to existing coding styles. Feel free to ask us anything you're unsure of if you're considering contributing. Thanks!
 
+Change Log
+----------
+v1.1 - Added some WISP coverage maps
+v1.0 - Initial Map
+
 License
 -------
 **Copyright 2012-2013 IrelandOffline. http://irelandoffline.org/**
