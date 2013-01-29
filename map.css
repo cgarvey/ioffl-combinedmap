@@ -1,5 +1,4 @@
 html { height: 100% }
-.map_canvas { height:100% }
 body { color: ##99B3CC; background-color:#a5bfdd; height: 100%; margin: 0px; padding: 0px; } 
 legend { color: black; font-family:Arial,Helvetica,sans-serif; font-size: 12px; font-weight: bold; padding-top: 5px; padding-left:10px; padding-right:10px; margin-left:0px; padding-bottom: 0px; }
 form img { margin-right: 5px; margin-left: 2px; }
@@ -13,4 +12,5 @@ ol, li, fieldset { margin: 0px; padding: 1px; font-family:Arial,Helvetica,sans-s
 .fldLast { margin-top: 5px; } 
 .imgDot { border: 0; width: 130px; height: 30px; }
 .imgLogo { border: 0; width: 8px; height: 8px; }
+#dvMap { height:100% }
 
