@@ -51,19 +51,45 @@ function fetchMarker() {
 
 // SECTION ON MOBILE NETWORKS AND PLATFORMS
 // Function to create SQL query string from checked boxes of a form FormNo
-function formScan(formNo) {
-	var i;
-	txtOut = "";
-	for (i = 0; i < document.forms[formNo].length; i++) {
-		if (document.forms[formNo].elements[i].checked) txtOut = txtOut + document.forms[formNo].elements[i].value;
-		else txtOut = txtOut + "";
+function getGSMNetworks() {
+	txt = "";
+	if( document.getElementById( 'idNetVoda' ).checked ) txt = "'Vodafone'";
+	if( document.getElementById( 'idNetO2' ).checked ) {
+		if( txt != "" ) txt += ", ";
+		txt += "'O2'";
 	}
-	return txtOut;
+	if( document.getElementById( 'idNetMet' ).checked ) {
+		if( txt != "" ) txt += ", ";
+		txt += "'Meteor'";
+	}
+	if( document.getElementById( 'idNet3' ).checked ) {
+		if( txt != "" ) txt += ", ";
+		txt += "'3'";
+	}
+	if( txt != "" ) txt += ", ";
+	txt += "'f'";
+	return txt;
 }
+function getGSMTechnology() {
+	txt = "";
+	if( document.getElementById( 'idPlatGSM' ).checked ) txt = " AND GSM='X'";
+	if( document.getElementById( 'idPlat3G' ).checked ) txt += " AND UMTS='X'";
+	return txt;
+}
+function getDSLTechnology() {
+	txt = "";
+	if( document.getElementById( 'idEirDSL' ).checked ) txt = "'y'";
+	if( document.getElementById( 'idEirNoDSL' ).checked ) {
+		if( txt != "" ) txt += ", ";
+		txt += "'n'";
+	}
+	return txt;
+}
+
 // Function combines Network, Platform queries of the Mobile Sites Fusion table.
 function MakeQuery() {
 	CombQry = ""
-	CombQry = "'Network' IN (" + formScan(0) + "'f')" + formScan(1);
+	CombQry = "'Network' IN (" + getGSMNetworks() + ")" + getGSMTechnology();
 	currentLayer = layer2
 	clearLayer();
 
@@ -76,10 +102,12 @@ function compQuery() {
 	currentLayer = layer;
 	clearLayer();
 
-	exchQry = "(" + formScan(2) + "'f')";
-	layer = new google.maps.FusionTablesLayer(1888694, { query: "SELECT Location FROM 1888694 WHERE 'Enabled' IN" + exchQry });
-	stackLayers();
-	currentLayer = layer;
+	var dslTech = getDSLTechnology();
+	if( dslTech != "" ) {
+		layer = new google.maps.FusionTablesLayer(1888694, { query: "SELECT Location FROM 1888694 WHERE 'Enabled' IN( " + dslTech + " )" });
+		stackLayers();
+		currentLayer = layer;
+	}
 }
 
 //SECTION ON UNDERLAYS

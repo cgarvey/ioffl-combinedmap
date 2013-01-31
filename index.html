@@ -18,7 +18,7 @@
 	<body onload="initialize()">
 		<div id="Form" class="form">
 			<img class="imgLogo" src="irelandoffline-logo.png" alt="IrelandOffline Logo" />
-			<form id="Network" name="providers">
+			<form>
 				<fieldset>
 					<legend>Fixed Wireless</legend>
 					<ol>
@@ -36,57 +36,48 @@
 					<legend>Mobile</legend>
 					<ol>
 						<li>
-							<input id="idNetVoda" onclick="MakeQuery()" type="checkbox" name="sites" value="'Vodafone',">
+							<input id="idNetVoda" onclick="MakeQuery()" type="checkbox" name="sites" />
 							<label for="idNetVoda"><img class="imgDot" src="dot-red.png" />Vodafone</label>
 						</li>
 						<li>
-							<input id="idNetO2" onclick="MakeQuery()" type="checkbox" name="sites" value="'O2',">
+							<input id="idNetO2" onclick="MakeQuery()" type="checkbox" name="sites" />
 							<label for="idNetO2"><img class="imgDot" src="dot-blue.png" />O2</label>
 						</li>
 						<li>
-							<input id="idNetMet" onclick="MakeQuery()" type="checkbox" name="sites" value="'Meteor',">
+							<input id="idNetMet" onclick="MakeQuery()" type="checkbox" name="sites" />
 							<label for="idNetMet"><img class="imgDot" src="dot-yellow.png" />Meteor</label>
 						</li>
 						<li class="bottomli">
-							<input id="idNet3" onclick="MakeQuery()" type="checkbox" name="sites" value="'3',">
+							<input id="idNet3" onclick="MakeQuery()" type="checkbox" name="sites" />
 							<label for="idNet3"><img class="imgDot" src="dot-green.png" />3 &nbsp;&nbsp; <img class="imgDot" src="dot-purple.png" />NBS</label>
 						</li>
 					</ol>
 				</fieldset>
-			</form>
-
-			<form id="Platform" name="technology">
 				<fieldset>
 					<ol>
 						<li>
-							<input id="idPlatGSM" onclick="MakeQuery()" name="platform" type="checkbox" value=" AND GSM = 'X'">
+							<input id="idPlatGSM" onclick="MakeQuery()" name="platform" type="checkbox" />
 							<label for="idPlatGSM">GSM (Voice/Text)</label>
 						</li>
 						<li class="bottomli">
-							<input id="idPlat3G" onclick="MakeQuery()" name="platform" type="checkbox" value=" AND UMTS = 'X'">
+							<input id="idPlat3G" onclick="MakeQuery()" name="platform" type="checkbox" />
 							<label for="idPlat3G">3G (Midband)</label>
 						</li>
 					</ol>
 				</fieldset>
-			</form>
-
-			<form id="Eircom" name= "eircom">
 				<fieldset>
 					<legend>Eircom</legend>
 					<ol>
 						<li>
-							<input id="idEirDSL" onclick="compQuery()" name="exchange" type="checkbox" value="'y',">
+							<input id="idEirDSL" onclick="compQuery()" name="exchange" type="checkbox" />
 							<label for="idEirDSL"><img class="imgDot" src="dot-white.png" />DSL</label>
 						</li>
 						<li class="bottomli">
-							<input id="idEirNoDSL" onclick="compQuery()" name="exchange" type="checkbox" value="'n',">
+							<input id="idEirNoDSL" onclick="compQuery()" name="exchange" type="checkbox" />
 							<label for="idEirNoDSL"><img class="imgDot" src="dot-grey.png" />No DSL</label>
 						</li>
 					</ol>
 				</fieldset>
-			</form>
-
-			<form id="AreaOverlay">
 				<fieldset>
 					<legend>Underlays</legend>
 					<ol>
