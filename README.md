@@ -26,6 +26,7 @@ Those two utilities are NodeJS modules. If you have NodeJS installed (and `npm`,
 
 Change Log
 ----------
+* v1.2 - Tidied up the Google Fusion queries, minor formatting tweaks, and bug fixes.
 * v1.1 - Added some WISP coverage maps. Minor tidy up.
 * v1.0 - Initial Map
 
