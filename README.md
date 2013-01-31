@@ -14,7 +14,7 @@ Building
 --------
 Copy files to a web-servable folder. To update minified versions of CSS/JavaScript, use `recess` and `uglifyjs` utilities as follows:
 
-``uglify map.js > map.min.js``
+``uglifyjs map.js > map.min.js``
 
 ``recess --compress map.css > map.min.css``
 
