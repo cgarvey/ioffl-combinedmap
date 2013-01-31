@@ -23,11 +23,11 @@
 					<legend>Fixed Wireless</legend>
 					<ol>
 						<li>
-							<input id="idWISPs" onchange="checkedState()" type="checkbox" name="WISPs" value="Bullseye">
+							<input id="idWISPs" onchange="checkedState()" type="checkbox" name="WISPs" />
 							<label for="idWISPs">WISPs</label>
 						</li>
 						<li class="bottomli">
-							<input id="idFWAs" onclick="MakeQuery()" type="checkbox" name="FWAs">
+							<input id="idFWAs" onclick="MakeQuery()" type="checkbox" name="FWAs" />
 							<label for="idFWAs">FWAs</label>
 						</li>
 					</ol>
@@ -82,34 +82,34 @@
 					<legend>Underlays</legend>
 					<ol>
 						<li>
-							<input id="idAreaNone" onclick="overlay(layer1, 1236159, 'SELECT KML FROM 1236159 WHERE Urban = \u0027F\u0027')" name="area" type="radio" />
+							<input id="idAreaNone" onclick="displayOverlay( this );" name="area" type="radio" />
 							<label for="idAreaNone">None</label>
 						</li>
 						<li>
-							<input id="idAreaUrban" onclick="overlay(layer1, 1236159, 'SELECT KML FROM 1236159 WHERE Urban = \u0027X\u0027')" name="area" type="radio" value="1236159">
+							<input id="idAreaUrban" onclick="displayOverlay( this, 1236159 );" name="area" type="radio" />
 							<label for="idAreaUrban">Urban</label>
 						</li>
 						<li>
-							<input id="idAreaNBS" onclick="overlay(layer1, 848418, 'SELECT KML FROM 848418')" name="area" type="radio" value="848418">
+							<input id="idAreaNBS" onclick="displayOverlay( this, 848418 );" name="area" type="radio" />
 							<label for="idAreaNBS">NBS</label>
 						</li>
 						<li>
-							<input id="idAreaCnt" onclick="overlay(layer1, 1242110, 'SELECT KML FROM 1242110')" name="area" type="radio" value="1242110">
+							<input id="idAreaCnt" onclick="displayOverlay( this, 1242110 );" name="area" type="radio" />
 							<label for="idAreaCnt">Counties</label>
 						</li>				
 						<li>
-							<input id="idAreacExch" onclick="overlay(layer1, 1214572, 'SELECT KML FROM 1214572')" name="area" type="radio" value="1214572">
+							<input id="idAreacExch" onclick="displayOverlay( this, 1214572 );" name="area" type="radio" />
 							<label for="idAreacExch">Exchanges</label>
 						</li>
 						<li class="bottomli">
-							<input id="idAreaInt" onclick="overlay(layer1, 1412833, 'SELECT coordinates FROM 1412833')" name="area" type="radio" value="1412833">
+							<input id="idAreaInt" onclick="displayOverlay( this, 1412833, false, 'coordinates' );" name="area" type="radio" />
 							<label for="idAreaInt">International</label>
 						</li>
 					</ol>
 				</fieldset>
 				<fieldset class="fldLast">
 					<div class="c">
-						<input type="button" class="centreform" onclick="fetchMarker()" value="Fetch Marker (3.5kms)" />
+						<input type="button" class="centreform" onclick="fetchMarker();" value="Fetch Marker (3.5kms)" />
 					</div>
 				</fieldset>
 				</form>

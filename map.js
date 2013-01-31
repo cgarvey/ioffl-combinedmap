@@ -119,6 +119,19 @@ function overlay(layerNo, dataset, querytxt) {
 	stackLayers();
 	currentLayer = layerNo;
 }
+function displayOverlay( el, dataSetID, useAdditionalUrbanOptions, kmlColName ) {
+	currentLayer = layer1;
+	clearLayer();
+	if( dataSetID > 0 && el ) {
+		var _kmlColName = "KML";
+		if( kmlColName && kmlColName != "" ) _kmlColName = kmlColName;
+		var sql = "SELECT " + _kmlColName + " FROM " + dataSetID;
+		if( useAdditionalUrbanOptions ) sql += " WHERE Urban='X'";
+		layer1 = new google.maps.FusionTablesLayer( dataSetID, { query:sql });
+		stackLayers();
+	}
+	currentLayer = layer1;
+}
 
 //SECTION ON MANAGING LAYERS
 function stackLayers() {
