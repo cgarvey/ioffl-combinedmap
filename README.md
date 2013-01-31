@@ -22,6 +22,7 @@ Those two utilities are NodeJS modules. If you have NodeJS installed (and `npm`,
 
 ``npm install recess uglify-js -g``
 
+*NOTE*: Be sure to make JS/CSS changes to the original files (not the minified ones)!
 
 Change Log
 ----------
