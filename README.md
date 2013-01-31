@@ -10,6 +10,19 @@ Contributing
 ------------
 [IrelandOffline](http://irelandoffline.org/) have put this code up on Github to encourage contribute from members and non-members alike. Please use the standard practice of Github's Pull Requests to contribute your changes. Try to stick to existing coding styles. Feel free to ask us anything you're unsure of if you're considering contributing. Thanks!
 
+Building
+--------
+Copy files to a web-servable folder. To update minified versions of CSS/JavaScript, use `recess` and `uglifyjs` utilities as follows:
+
+``uglify map.js > map.min.js``
+
+``recess --compress map.css > map.min.css``
+
+Those two utilities are NodeJS modules. If you have NodeJS installed (and `npm`, its package manager), you can simply:
+
+``npm install recess uglify-js -g``
+
+
 Change Log
 ----------
 * v1.1 - Added some WISP coverage maps. Minor tidy up.
