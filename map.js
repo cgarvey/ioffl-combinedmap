@@ -1,11 +1,11 @@
 /*
-Copyright (c) 2012-2013 IrelandOffline
+  Copyright (c) 2012-2013 IrelandOffline
 */
 
 var currentLayer = null;
-var layer = null;
-var layer1 = null;
-var layer2 = null;
+var lyrDSL = null;
+var lyrUnderlays = null;
+var lyrMobile = null;
 var marker = "null"
 var circle = null;
 var crosshair = null;
@@ -88,27 +88,30 @@ function getDSLTechnology() {
 function MakeQuery() {
 	var sql = getGSMNetworks();
 
-	currentLayer = layer2
+	currentLayer = lyrMobile;
 	clearLayer();
+	lyrMobile = null;
 	
 	if( sql != "" ) {
 		sql = "SELECT Location FROM 5488684 WHERE 'Network' IN (" + sql + ")" + getGSMTechnology();
-		layer2 = new google.maps.FusionTablesLayer( 5488684, { query:sql } );
-		stackLayers();
+		lyrMobile = new google.maps.FusionTablesLayer( 5488684, { query:sql } );
 	}
-	currentLayer = layer2;
+	stackLayers();
+	currentLayer = lyrMobile;
 }
+
 // Function queries the Eircom exchanges Fusion Table
 function compQuery() {
-	currentLayer = layer;
+	currentLayer = lyrDSL;
 	clearLayer();
+	lyrDSL = null;
 
 	var dslTech = getDSLTechnology();
 	if( dslTech != "" ) {
-		layer = new google.maps.FusionTablesLayer(1888694, { query: "SELECT Location FROM 1888694 WHERE 'Enabled' IN( " + dslTech + " )" });
-		stackLayers();
-		currentLayer = layer;
+		lyrDSL = new google.maps.FusionTablesLayer(1888694, { query: "SELECT Location FROM 1888694 WHERE 'Enabled' IN( " + dslTech + " )" });
 	}
+	stackLayers();
+	currentLayer = lyrDSL;
 }
 
 //SECTION ON UNDERLAYS
@@ -116,34 +119,36 @@ function compQuery() {
 function overlay(layerNo, dataset, querytxt) {
 	currentLayer = layerNo;
 	clearLayer();
-	layer1 = new google.maps.FusionTablesLayer(dataset, { query: querytxt });
+	lyrUnderlays = new google.maps.FusionTablesLayer(dataset, { query: querytxt });
 	stackLayers();
 	currentLayer = layerNo;
 }
 function displayOverlay( el, dataSetID, useAdditionalUrbanOptions, kmlColName ) {
-	currentLayer = layer1;
+	currentLayer = lyrUnderlays;
 	clearLayer();
+	lyrUnderlays = null;
+
 	if( dataSetID > 0 && el ) {
 		var _kmlColName = "KML";
 		if( kmlColName && kmlColName != "" ) _kmlColName = kmlColName;
 		var sql = "SELECT " + _kmlColName + " FROM " + dataSetID;
 		if( useAdditionalUrbanOptions ) sql += " WHERE Urban='X'";
-		layer1 = new google.maps.FusionTablesLayer( dataSetID, { query:sql });
-		stackLayers();
+		lyrUnderlays = new google.maps.FusionTablesLayer( dataSetID, { query:sql });
 	}
-	currentLayer = layer1;
+	stackLayers();
+	currentLayer = lyrUnderlays;
 }
 
 //SECTION ON MANAGING LAYERS
 function stackLayers() {
-	if (layer1 != null) layer1.setMap(map);
-	if (layer != null) layer.setMap(map);
-	if (layer2 != null) layer2.setMap(map);
+	if (lyrUnderlays != null) lyrUnderlays.setMap(map);
+	if (lyrDSL != null) lyrDSL.setMap(map);
+	if (lyrMobile != null) lyrMobile.setMap(map);
 }
 function clearAllLayers() {
-	if (layer) layer.setMap(null);
-	if (layer1) layer1.setMap(null);
-	if (layer2) layer2.setMap(null);
+	if (lyrDSL) lyrDSL.setMap(null);
+	if (lyrUnderlays) lyrUnderlays.setMap(null);
+	if (lyrMobile) lyrMobile.setMap(null);
 }
 function clearLayer() {
 	if (currentLayer != null) currentLayer.setMap(null);
