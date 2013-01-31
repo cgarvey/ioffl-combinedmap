@@ -66,8 +66,6 @@ function getGSMNetworks() {
 		if( txt != "" ) txt += ", ";
 		txt += "'3'";
 	}
-	if( txt != "" ) txt += ", ";
-	txt += "'f'";
 	return txt;
 }
 function getGSMTechnology() {
@@ -88,13 +86,16 @@ function getDSLTechnology() {
 
 // Function combines Network, Platform queries of the Mobile Sites Fusion table.
 function MakeQuery() {
-	CombQry = ""
-	CombQry = "'Network' IN (" + getGSMNetworks() + ")" + getGSMTechnology();
+	var sql = getGSMNetworks();
+
 	currentLayer = layer2
 	clearLayer();
-
-	layer2 = new google.maps.FusionTablesLayer(5488684, { query: "SELECT Location FROM 5488684 WHERE " + CombQry });
-	stackLayers();
+	
+	if( sql != "" ) {
+		sql = "SELECT Location FROM 5488684 WHERE 'Network' IN (" + sql + ")" + getGSMTechnology();
+		layer2 = new google.maps.FusionTablesLayer( 5488684, { query:sql } );
+		stackLayers();
+	}
 	currentLayer = layer2;
 }
 // Function queries the Eircom exchanges Fusion Table
