@@ -10,6 +10,27 @@ Contributing
 ------------
 [IrelandOffline](http://irelandoffline.org/) have put this code up on Github to encourage contribute from members and non-members alike. Please use the standard practice of Github's Pull Requests to contribute your changes. Try to stick to existing coding styles. Feel free to ask us anything you're unsure of if you're considering contributing. Thanks!
 
+Building
+--------
+Copy files to a web-servable folder. To update minified versions of CSS/JavaScript, use `recess` and `uglifyjs` utilities as follows:
+
+``uglifyjs map.js > map.min.js``
+
+``recess --compress map.css > map.min.css``
+
+Those two utilities are NodeJS modules. If you have NodeJS installed (and `npm`, its package manager), you can simply:
+
+``npm install recess uglify-js -g``
+
+*NOTE*: Be sure to make JS/CSS changes to the original files (not the minified ones)!
+
+Change Log
+----------
+* v1.3 - Fix issue with previously turned off layers appearing again, at times.
+* v1.2 - Tidied up the Google Fusion queries, minor formatting tweaks, and bug fixes.
+* v1.1 - Added some WISP coverage maps. Minor tidy up.
+* v1.0 - Initial Map
+
 License
 -------
 **Copyright 2012-2013 IrelandOffline. http://irelandoffline.org/**
