@@ -6,6 +6,7 @@ var currentLayer = null;
 var lyrDSL = null;
 var lyrUnderlays = null;
 var lyrMobile = null;
+var lyrWISPs = null;
 var marker = "null"
 var circle = null;
 var crosshair = null;
@@ -47,6 +48,30 @@ function fetchMarker() {
 	marker.position = map.getCenter(),
 	circle.bindTo('center', marker, 'position');
 	marker.setMap(map);
+}
+
+//SECTION ON WIRELESS
+//Function to create fusion tables layer from drop down option
+function getWISPGroup(sel) {
+
+  var sql = "'Group' = "+ sel.value;
+  
+	currentLayer = lyrWISPs;
+	clearLayer();
+	lyrWISPs = null;
+  
+
+  		lyrWISPs = new google.maps.FusionTablesLayer({
+  			query: {
+  			  select: 'Low_Res_Poly',
+  			  from: '1g4848Z90Y2cd1xXcPfJzadguwP2JHzqE-Ip5dLE',
+  			  where: sql
+
+    		},
+    	});
+    	
+	stackLayers();
+	currentLayer = lyrWISPs;
 }
 
 // SECTION ON MOBILE NETWORKS AND PLATFORMS
@@ -93,9 +118,15 @@ function MakeQuery() {
 	lyrMobile = null;
 	
 	if( sql != "" ) {
-		sql = "SELECT Location FROM 5488684 WHERE 'Network' IN (" + sql + ")" + getGSMTechnology();
-		lyrMobile = new google.maps.FusionTablesLayer( 5488684, { query:sql } );
-	}
+		sql = "'Network' IN (" + sql + ")" + getGSMTechnology();
+		lyrMobile = new google.maps.FusionTablesLayer({
+  			query: {
+  			  select: 'Location',
+  			  from: '1BUwTpYWcd3McCpjHpbOZvuspJWu4pAIGUuTW0Pw',
+  			  where: sql
+  					},
+  	});
+		}
 	stackLayers();
 	currentLayer = lyrMobile;
 }
@@ -108,7 +139,16 @@ function compQuery() {
 
 	var dslTech = getDSLTechnology();
 	if( dslTech != "" ) {
-		lyrDSL = new google.maps.FusionTablesLayer(1888694, { query: "SELECT Location FROM 1888694 WHERE 'Enabled' IN( " + dslTech + " )" });
+	  	dslTech = "'Enabled' IN( " + dslTech + " )";
+		lyrDSL = new google.maps.FusionTablesLayer({
+  			query: {
+  			  select: 'Location',
+  			  from: '1xvObXKsemrYIBklXMSoRfQ17sfl9W-6JSua0PGQ',
+  			  where: dslTech
+
+  					},
+  	});
+
 	}
 	stackLayers();
 	currentLayer = lyrDSL;
@@ -123,17 +163,25 @@ function overlay(layerNo, dataset, querytxt) {
 	stackLayers();
 	currentLayer = layerNo;
 }
-function displayOverlay( el, dataSetID, useAdditionalUrbanOptions, kmlColName ) {
+function displayOverlay( el, dataSetID, useAdditionalqueryOptions,querytext, kmlColName ) {
 	currentLayer = lyrUnderlays;
 	clearLayer();
 	lyrUnderlays = null;
 
-	if( dataSetID > 0 && el ) {
+	if(el ) {
 		var _kmlColName = "KML";
 		if( kmlColName && kmlColName != "" ) _kmlColName = kmlColName;
-		var sql = "SELECT " + _kmlColName + " FROM " + dataSetID;
-		if( useAdditionalUrbanOptions ) sql += " WHERE Urban='X'";
-		lyrUnderlays = new google.maps.FusionTablesLayer( dataSetID, { query:sql });
+		var sql = "";
+		if( useAdditionalqueryOptions ) sql += querytxt;
+
+		lyrUnderlays = new google.maps.FusionTablesLayer({
+  			query: {
+  			  select: _kmlColName,
+  			  from: dataSetID,
+  			  where:querytext
+
+  					},
+  	});
 	}
 	stackLayers();
 	currentLayer = lyrUnderlays;
@@ -142,11 +190,13 @@ function displayOverlay( el, dataSetID, useAdditionalUrbanOptions, kmlColName ) 
 //SECTION ON MANAGING LAYERS
 function stackLayers() {
 	if (lyrUnderlays != null) lyrUnderlays.setMap(map);
+	if (lyrWISPs != null) lyrWISPs.setMap(map);	
 	if (lyrDSL != null) lyrDSL.setMap(map);
 	if (lyrMobile != null) lyrMobile.setMap(map);
 }
 function clearAllLayers() {
 	if (lyrDSL) lyrDSL.setMap(null);
+	if (lyrWISPs) lyrWISps.setMap(null);
 	if (lyrUnderlays) lyrUnderlays.setMap(null);
 	if (lyrMobile) lyrMobile.setMap(null);
 }

@@ -2,19 +2,22 @@ html { height: 100% }
 body { color: #333; background-color:#a5bfdd; height: 100%; margin: 0px; padding: 0px; } 
 legend { color: #333; font-family:Arial,Helvetica,sans-serif; font-size: 12px; font-weight: bold; padding-top: 5px; padding-left:10px; padding-right:10px; margin-left:0px; padding-bottom: 0px; }
 fieldset { border: 1px solid #999; }
-fieldset p { font-size: 0.9em; margin: 0 0 0 10px; }
+fieldset { font-size: 0.9em; margin: 0 0 0 10px; }
 form img { margin-right: 5px; margin-left: 2px; }
 input { float: left; margin-top: 0px; }
 label { margin-bottom: 0px; }
 ul, ol { list-style: none; }
 ol, li, fieldset { margin: 0px; padding: 1px; font-family:Arial,Helvetica,sans-serif; font-size: 11px; clear: both; }
+p { margin: 0px; padding: 1px; font-family:Arial,Helvetica,sans-serif; font-size: 11px;}
 .dvSidebar { padding: 4px 10px; margin-right:2px; margin-left:2px; float:left; width:150px; }
 .c { text-align: center; margin-left: auto; margin-right: auto; }
 .dvBut { padding: 3px; }
+.WiRBs { margin-right: 4px; }
+.frstWiRBs { margin-right: 4px; padding-left: 5px;}
 .dvBut INPUT { width: 95%; }
 .centreform { font-size: 0.9em; float: none; padding: 3px; }
 .bottomli { padding-bottom: 5px; }
 .fldLast { margin-top: 5px; } 
-.imgDot { border: 0; width: 8px; height: 8px; }
+.imgDot { padding-left:1px; padding-right: 2px; border: 0; width: 8px; height: 8px; }
 .imgLogo { border: 0; width: 130px; height: 30px; display: block; }
 #dvMap { height:100% }

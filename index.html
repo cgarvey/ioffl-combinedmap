@@ -11,20 +11,42 @@
 		<meta name="description" content="A map showing the availabiility of Irish broadband services, of all technologies, in Ireland">
 		<meta name="keywords" content="broadband, irish broadband, broandband map, ireland, irelandoffline, irish internet, broadband checker">
 		<meta name="author" content="IrelandOffline.org">
-		<link rel=stylesheet href='map.min.css' type='text/css'>
+		<link rel=stylesheet href='map.css' type='text/css'>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript" src="map.min.js"></script>
+		<script type="text/javascript" src="map.js"></script>
 	</head>
 	<body onload="initialize()">
 		<div class="dvSidebar">
 			<img class="imgLogo c" src="irelandoffline-logo.png" alt="IrelandOffline Logo" />
 			<form>
 				<fieldset>
-					<legend>Wireless</legend>
+					<legend><span title="Fixed Wireless broadband for residential business use">Wireless</span></legend>
 					<ol>
+						<li>
+							<p><span title="Press all buttons to see all operators. Click on map for operator details. ">Low resolution maps</span></p>
+						</li>
+						<li>
+							<form action="">
+								<input class="frstWiRBs" type="radio" name="WISPsLR" value="1" onclick="getWISPGroup(this)">
+								<input class="WiRBs" type="radio" name="WISPsLR" value="2" onclick="getWISPGroup(this)">
+								<input class="WiRBs" type="radio" name="WISPsLR" value="3" onclick="getWISPGroup(this)">
+								<input class="WiRBs" type="radio" name="WISPsLR" value="4" onclick="getWISPGroup(this)">
+								<input class="WiRBs" type="radio" name="WISPsLR" value="5" onclick="getWISPGroup(this)">
+								<input class="WiRBs" type="radio" name="WISPsLR" value="6" onclick="getWISPGroup(this)">
+								</form>
+
+						</li>
+						<li>
+							<p><span title="Individual high definition maps">High resolution maps</span></p>
+						</li>
 						<li class="bottomli">
-							<input id="idWISPs" onchange="checkedState()" type="checkbox" name="WISPs" />
-							<label for="idWISPs">Wireless</label>
+							<select class="dvBut c" name="WISPsHR" onchange="newLayer(54.52309, 53.17326, -8.289186, -10.29116, 0.5, 'overlays/westnet.png')">
+								<option value="NoneHR">Select</option>
+								<option value="DigitalForge">Digital Forge</option>
+								<option value="Kerrybroadband">Kerry broadband</option>
+								<option value="Permanet">Permanet</option>
+								<option value="Westnet">Westnet</option>
+							</select>
 						</li>
 					</ol>
 				</fieldset>				
@@ -81,23 +103,27 @@
 							<label for="idAreaNone">None</label>
 						</li>
 						<li>
-							<input id="idAreaUrban" onclick="displayOverlay( this, 1236159 );" name="area" type="radio" />
+							<input id="idAreaUrban" onclick="displayOverlay( this, '1N3WaDzMfsCjieaYRZQb4j3RvQkViigPamPLBQ40',false,'Urban =\u0027X\u0027' );" name="area" type="radio" />
 							<label for="idAreaUrban">Urban</label>
 						</li>
 						<li>
-							<input id="idAreaNBS" onclick="displayOverlay( this, 848418 );" name="area" type="radio" />
+							<input id="idAreaNBS" onclick="displayOverlay( this, '1r2EavBfInNhT7WfrWnVfQg-yFpIu2KpocnXHHIk',false,'NBS =\u0027Y\u0027' );" name="area" type="radio" />
 							<label for="idAreaNBS">NBS</label>
 						</li>
 						<li>
-							<input id="idAreaCnt" onclick="displayOverlay( this, 1242110 );" name="area" type="radio" />
+							<input id="idArea70pc" onclick="displayOverlay( this, '1r2EavBfInNhT7WfrWnVfQg-yFpIu2KpocnXHHIk',false,'CUM_PC_POP < 70' );" name="area" type="radio" />
+							<label for="idArea70pc">70% Population</label>
+						</li>
+						<li>
+							<input id="idAreaCnt" onclick="displayOverlay( this, '19aJ2-VsUU1b874K4NTeK9Y35gexx-6Tt3vPIEt0' );" name="area" type="radio" />
 							<label for="idAreaCnt">Counties</label>
 						</li>				
 						<li>
-							<input id="idAreacExch" onclick="displayOverlay( this, 1214572 );" name="area" type="radio" />
+							<input id="idAreacExch" onclick="displayOverlay( this, '1O-nxVT8fhe6gPSfMURzyAhDOAWc1gRXLrFyIRUQ' );" name="area" type="radio" />
 							<label for="idAreacExch">Exchanges</label>
 						</li>
 						<li class="bottomli">
-							<input id="idAreaInt" onclick="displayOverlay( this, 1412833, false, 'coordinates' );" name="area" type="radio" />
+							<input id="idAreaInt" onclick="displayOverlay( this, '1qfbWuy2IUdj3xkXOmkls6Cuym_eNMCxkRpYQS24', false,'', 'coordinates' );" name="area" type="radio" />
 							<label for="idAreaInt">International</label>
 						</li>
 					</ol>
