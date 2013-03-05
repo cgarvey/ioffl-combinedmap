@@ -18,6 +18,8 @@ p { margin: 0px; padding: 1px; font-family:Arial,Helvetica,sans-serif; font-size
 .centreform { font-size: 0.9em; float: none; padding: 3px; }
 .bottomli { padding-bottom: 5px; }
 .fldLast { margin-top: 5px; } 
+.popinput {width:40px}
+.poplabel {margin-bottom: 0px; padding-bottom: 0px;}
 .imgDot { padding-left:1px; padding-right: 2px; border: 0; width: 8px; height: 8px; }
 .imgLogo { border: 0; width: 130px; height: 30px; display: block; }
 #dvMap { height:100% }

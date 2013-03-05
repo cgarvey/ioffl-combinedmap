@@ -40,12 +40,11 @@
 							<p><span title="Individual high definition maps">High resolution maps</span></p>
 						</li>
 						<li class="bottomli">
-							<select class="dvBut c" name="WISPsHR" onchange="newLayer(54.52309, 53.17326, -8.289186, -10.29116, 0.5, 'overlays/westnet.png')">
-								<option value="NoneHR">Select</option>
-								<option value="DigitalForge">Digital Forge</option>
-								<option value="Kerrybroadband">Kerry broadband</option>
-								<option value="Permanet">Permanet</option>
-								<option value="Westnet">Westnet</option>
+							<select class="dvBut c" name="WISPsHR" onchange="getHRMap(this)">
+								<option value="0">Select None</option>
+								<option value="1">Digital Forge</option>
+								<option value="2">Kerry broadband</option>
+								<option value="3">Westnet</option>
 							</select>
 						</li>
 					</ol>
@@ -111,8 +110,8 @@
 							<label for="idAreaNBS">NBS</label>
 						</li>
 						<li>
-							<input id="idArea70pc" onclick="displayOverlay( this, '1r2EavBfInNhT7WfrWnVfQg-yFpIu2KpocnXHHIk',false,'CUM_PC_POP < 70' );" name="area" type="radio" />
-							<label for="idArea70pc">70% Population</label>
+							<input id="idPopPC" type="number" class="popinput" value="70" name="quantity" min="0" max="100"  onchange ="displayOverlay( this, '1r2EavBfInNhT7WfrWnVfQg-yFpIu2KpocnXHHIk',false,'CUM_PC_POP < 70' );" />
+							<label class="poplabel" for="idPopPC">% Population</label>
 						</li>
 						<li>
 							<input id="idAreaCnt" onclick="displayOverlay( this, '19aJ2-VsUU1b874K4NTeK9Y35gexx-6Tt3vPIEt0' );" name="area" type="radio" />

@@ -74,6 +74,33 @@ function getWISPGroup(sel) {
 	currentLayer = lyrWISPs;
 }
 
+//Function to load High Resolution Map from drop down list
+function getHRMap(sel) {
+  
+  switch(sel.value)
+  {
+	  case "0":
+ 	  	deleteOverlays()
+ 	  	break;
+ 	  	
+	  case "1":
+	  	deleteOverlays();
+	  	newLayer(52.17259, 51.27235, -8.3619661, -10.12707, 0.9, "overlays/digital-forge.png")
+		break;
+		
+	  case "2":
+	  	deleteOverlays();
+	  	newLayer(52.744606, 51.949345, -9.118652, -10.721283, 0.8, "overlays/kerry-broadband.png")
+		break;
+		
+	  case "3":
+	  	deleteOverlays();	  	
+	  	newLayer(54.52309, 53.17326, -8.289186, -10.29116, 0.5, "overlays/westnet.png")
+		break;
+
+  }
+}
+
 // SECTION ON MOBILE NETWORKS AND PLATFORMS
 // Function to create SQL query string from checked boxes of a form FormNo
 function getGSMNetworks() {
