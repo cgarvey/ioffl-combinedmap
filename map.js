@@ -97,6 +97,12 @@ function getHRMap(sel) {
 	  	deleteOverlays();	  	
 	  	newLayer(54.52309, 53.17326, -8.289186, -10.29116, 0.5, "overlays/westnet.png")
 		break;
+		
+	  case "4":
+	  	deleteOverlays();	  	
+	  	newLayer(55.462214, 51.351278, -5.904817, -10.821576, 1.0, "overlays/NBScoverage.png")
+		break;
+		
 
   }
 }

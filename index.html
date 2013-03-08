@@ -23,7 +23,7 @@
 					<legend><span title="Fixed Wireless broadband for residential business use">Wireless</span></legend>
 					<ol>
 						<li>
-							<p><span title="Press all buttons to see all operators. Click on map for operator details. ">Low resolution maps</span></p>
+							<p><span title="Press all buttons in turn to see all operators. Click on service area for operator details. ">Low resolution maps</span></p>
 						</li>
 						<li>
 							<form action="">
@@ -45,6 +45,8 @@
 								<option value="1">Digital Forge</option>
 								<option value="2">Kerry broadband</option>
 								<option value="3">Westnet</option>
+								<option value="4">NBS</option>
+								
 							</select>
 						</li>
 					</ol>
@@ -110,8 +112,8 @@
 							<label for="idAreaNBS">NBS</label>
 						</li>
 						<li>
-							<input id="idPopPC" type="number" class="popinput" value="70" name="quantity" min="0" max="100"  onchange ="displayOverlay( this, '1r2EavBfInNhT7WfrWnVfQg-yFpIu2KpocnXHHIk',false,'CUM_PC_POP < 70' );" />
-							<label class="poplabel" for="idPopPC">% Population</label>
+							<input id="idPopPC" onclick ="displayOverlay( this, '1r2EavBfInNhT7WfrWnVfQg-yFpIu2KpocnXHHIk',false,'CUM_PC_POP < 70' );" name= "area" type="radio"/>
+							<label for="idPopPC">70% Population</label>
 						</li>
 						<li>
 							<input id="idAreaCnt" onclick="displayOverlay( this, '19aJ2-VsUU1b874K4NTeK9Y35gexx-6Tt3vPIEt0' );" name="area" type="radio" />
