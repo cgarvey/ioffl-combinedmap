@@ -26,6 +26,7 @@ Those two utilities are NodeJS modules. If you have NodeJS installed (and `npm`,
 
 Change Log
 ----------
+* v1.5 - Add additional WISPs.
 * v1.4 - Updated data source. New WISP maps of varying resolutions.
 * v1.3 - Fix issue with previously turned off layers appearing again, at times.
 * v1.2 - Tidied up the Google Fusion queries, minor formatting tweaks, and bug fixes.
