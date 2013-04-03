@@ -100,10 +100,33 @@ function getHRMap(sel) {
 		
 	  case "4":
 	  	deleteOverlays();	  	
-	  	newLayer(55.462214, 51.351278, -5.904817, -10.821576, 1.0, "overlays/NBScoverage.png")
+	  	newLayer(52.770413, 52.247225, -7.624030, -8.999628 , 0.6, "overlays/celtic.png")
 		break;
 		
-
+	  case "5":
+	  	deleteOverlays();	  	
+	  	newLayer(53.000802, 51.284617,  -5.845832, -10.391092 , 0.6, "overlays/permanet.png")
+		break;
+		
+	  case "6":
+	  	deleteOverlays();	  	
+	  	newLayer(55.403824, 54.060879, -5.390141, -8.789281 , 0.6, "overlays/nwe.png")
+		break;
+		
+	  case "7":
+	  	deleteOverlays();	  	
+	  	newLayer(55.177757, 53.297511, -5.415480, -8.754231 , 0.5, "overlays/net1.png")
+		break;
+		
+	  case "8":
+	  	deleteOverlays();	  	
+	  	newLayer(54.256153, 51.660789, -6.001117, -10.720875 , 0.5, "overlays/ripplecom.png")
+		break;
+		
+	  case "9":
+	  	deleteOverlays();	  	
+	  	newLayer(55.462214, 51.351278, -5.904817, -10.821576, 1.0, "overlays/NBScoverage.png")
+		break;
   }
 }
 
@@ -134,10 +157,10 @@ function getGSMTechnology() {
 }
 function getDSLTechnology() {
 	txt = "";
-	if( document.getElementById( 'idEirDSL' ).checked ) txt = "'y'";
+	if( document.getElementById( 'idEirDSL' ).checked ) txt = "'Yes'";
 	if( document.getElementById( 'idEirNoDSL' ).checked ) {
 		if( txt != "" ) txt += ", ";
-		txt += "'n'";
+		txt += "'No'";
 	}
 	return txt;
 }
@@ -176,7 +199,7 @@ function compQuery() {
 		lyrDSL = new google.maps.FusionTablesLayer({
   			query: {
   			  select: 'Location',
-  			  from: '1xvObXKsemrYIBklXMSoRfQ17sfl9W-6JSua0PGQ',
+  			  from: '1oH7N4dnrXdZHi_prjMKHDdZBqRayS8Cb1Ww66n0',
   			  where: dslTech
 
   					},

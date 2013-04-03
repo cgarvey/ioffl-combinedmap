@@ -11,9 +11,9 @@
 		<meta name="description" content="A map showing the availabiility of Irish broadband services, of all technologies, in Ireland">
 		<meta name="keywords" content="broadband, irish broadband, broandband map, ireland, irelandoffline, irish internet, broadband checker">
 		<meta name="author" content="IrelandOffline.org">
-		<link rel=stylesheet href='map.min.css?ver=1.4' type='text/css'>
+		<link rel=stylesheet href='map.css?ver=1.4' type='text/css'>
 		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript" src="map.min.js?ver=1.4"></script>
+		<script type="text/javascript" src="map.js?ver=1.4"></script>
 	</head>
 	<body onload="initialize()">
 		<div class="dvSidebar">
@@ -32,7 +32,8 @@
 								<input class="WiRBs" type="radio" name="WISPsLR" value="3" onclick="getWISPGroup(this)">
 								<input class="WiRBs" type="radio" name="WISPsLR" value="4" onclick="getWISPGroup(this)">
 								<input class="WiRBs" type="radio" name="WISPsLR" value="5" onclick="getWISPGroup(this)">
-								<input class="WiRBs" type="radio" name="WISPsLR" value="6" onclick="getWISPGroup(this)">
+								<input class="WiRBs" type="radio" name="WISPsLR" value="6" id="WISPsLRoff"onclick="getWISPGroup(this)">
+								<label for="WISPsLRoff">Off</label>
 								</form>
 
 						</li>
@@ -45,7 +46,12 @@
 								<option value="1">Digital Forge</option>
 								<option value="2">Kerry broadband</option>
 								<option value="3">Westnet</option>
-								<option value="4">NBS</option>
+								<option value="4">Celtic</option>
+								<option value="5">Permanet</option>
+								<option value="6">NWE</option>
+								<option value="7">Net 1</option>
+								<option value="8">Ripplecom</option>
+								<option value="9">NBS</option>
 								
 							</select>
 						</li>
@@ -120,9 +126,14 @@
 							<label for="idAreaCnt">Counties</label>
 						</li>				
 						<li>
+							<input id="idAreaConstit" onclick="displayOverlay( this, '1iFovmwUEmFNvMKmHn3Q5KVnvO3kS5r4rzTQIcY4' );" name="area" type="radio" />
+							<label for="idAreaConstit">Constituencies</label>
+						</li>				
+						<li>
 							<input id="idAreacExch" onclick="displayOverlay( this, '1O-nxVT8fhe6gPSfMURzyAhDOAWc1gRXLrFyIRUQ' );" name="area" type="radio" />
 							<label for="idAreacExch">Exchanges</label>
 						</li>
+						
 						<li class="bottomli">
 							<input id="idAreaInt" onclick="displayOverlay( this, '1qfbWuy2IUdj3xkXOmkls6Cuym_eNMCxkRpYQS24', false,'', 'coordinates' );" name="area" type="radio" />
 							<label for="idAreaInt">International</label>
